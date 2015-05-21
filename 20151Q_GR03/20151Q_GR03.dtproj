@@ -32,5 +32,20 @@
       <FullPath>Package.dtsx</FullPath>
       <References />
     </DtsPackage>
+    <DtsPackage FormatVersion="0">
+      <Name>Template_MySQL_a_TXT.dtsx</Name>
+      <FullPath>Template_MySQL_a_TXT.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="0">
+      <Name>Template_SQL_a_DW.dtsx</Name>
+      <FullPath>Template_SQL_a_DW.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="0">
+      <Name>Template_TXT_a_DW.dtsx</Name>
+      <FullPath>Template_TXT_a_DW.dtsx</FullPath>
+      <References />
+    </DtsPackage>
   </DTSPackages>
 </Project>
