@@ -277,7 +277,7 @@ CREATE TABLE [dbo].[AUX_TMI](
 	[SK_Barrio] [numeric](18, 0) NOT NULL,
 	[Latitud] [decimal](18, 10) NOT NULL,
 	[Longitud] [decimal](18, 10) NOT NULL,
-	[Direccion] [nvarchar](255) NOT NULL,
+	[Direccion] [nvarchar](max) NOT NULL,
  CONSTRAINT [PK_AUX_TMI] PRIMARY KEY CLUSTERED 
 (
 	[SK_TMI] ASC
