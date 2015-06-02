@@ -1,3 +1,5 @@
+USE [MIS_GRUPO_03]
+GO
 -- Script de carga de dimensión tiempo
 -- (Horas, Dias, Meses, Años y Franjas Horarias)
 SET NOCOUNT ON 
