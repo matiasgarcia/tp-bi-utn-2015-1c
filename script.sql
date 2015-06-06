@@ -87,6 +87,8 @@ BEGIN
 CREATE TABLE [dbo].[LK_Franja_Horaria](
 	[SK_Franja_Horaria] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
 	[Descripcion] [nvarchar](255) NOT NULL,
+	[Hora_Desde] [int] NOT NULL,
+	[Hora_Hasta] [int] NOT NULL,
  CONSTRAINT [PK_LK_Franja_Horaria] PRIMARY KEY CLUSTERED 
 (
 	[SK_Franja_Horaria] ASC
@@ -125,6 +127,7 @@ CREATE TABLE [dbo].[LK_Dia](
 	[Descripcion] [nvarchar](255) NOT NULL,
 	[SK_Mes] [numeric](18, 0) NOT NULL,
 	[Numero] [int] NOT NULL,
+	[Fecha] [date] NOT NULL,
  CONSTRAINT [PK_LK_Dia] PRIMARY KEY CLUSTERED 
 (
 	[SK_Dia] ASC
@@ -304,6 +307,9 @@ CREATE TABLE [dbo].[LK_Usuario](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 END
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[LK_Usuario]') AND type in (N'U'))
+DROP TABLE [dbo].[AUX_TMI_Geolocalizadas]
 GO
 CREATE TABLE [dbo].[AUX_TMI_Geolocalizadas](
 	[ID_Estacion] [numeric](18, 0) NOT NULL,

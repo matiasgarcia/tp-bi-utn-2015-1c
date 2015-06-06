@@ -13,7 +13,7 @@ SET NOCOUNT ON
 DECLARE	
 	  @añoDesde INT = 2011
 	, @añoHasta INT = 2013
-	, @curAño INT
+	, @curAño   INT
 
 SET @curAño = @añoDesde
 
@@ -58,7 +58,6 @@ DECLARE @prevLang VARCHAR(255) = @@LANGUAGE
 
 SET LANGUAGE  'SPANISH'
 
-
   
 INSERT INTO LK_Mes (Descripcion, Numero, SK_Año)
 SELECT 
@@ -88,13 +87,14 @@ BEGIN
 
   SET @curDia = CAST(CAST(@curAño AS VARCHAR(4)) + '-01-01' AS DATETIME)
 
-  WHILE year(@curDia) = @curAño
+  WHILE YEAR(@curDia) = @curAño
   BEGIN
   
-    INSERT INTO LK_Dia (Descripcion, Numero, SK_Mes)
+    INSERT INTO LK_Dia (Descripcion, Numero, SK_Mes, Fecha)
     SELECT 
-        convert(varchar(255), @curDia, 106)
+        CONVERT(varchar(255), @curDia, 106)
       , DAY(@curDia), m.SK_Mes 
+      , @curDia
     FROM LK_Mes m, LK_Año a
     WHERE 
           m.SK_Año = a.SK_Año
@@ -110,17 +110,17 @@ BEGIN
 END
 
 -- cargo franja horaria
-INSERT INTO LK_Franja_Horaria (Descripcion)
-VALUES ('Madrugada')
+INSERT INTO LK_Franja_Horaria (Descripcion, Hora_Desde, Hora_Hasta)
+VALUES ('Madrugada', 0, 5)
 
-INSERT INTO LK_Franja_Horaria (Descripcion)
-VALUES ('Mañana')
+INSERT INTO LK_Franja_Horaria (Descripcion, Hora_Desde, Hora_Hasta)
+VALUES ('Mañana', 6, 11)
 
-INSERT INTO LK_Franja_Horaria (Descripcion)
-VALUES ('Tarde')
+INSERT INTO LK_Franja_Horaria (Descripcion, Hora_Desde, Hora_Hasta)
+VALUES ('Tarde', 12, 19)
 
-INSERT INTO LK_Franja_Horaria (Descripcion)
-VALUES ('Noche')
+INSERT INTO LK_Franja_Horaria (Descripcion, Hora_Desde, Hora_Hasta)
+VALUES ('Noche', 20 , 23)
 
 DECLARE @horaHasta DATETIME = CAST(CAST(@añoHasta + 1 AS VARCHAR(4)) + '-01-01' AS DATETIME)
 
@@ -145,12 +145,7 @@ BEGIN
     AND m.Numero = MONTH(@curDia)
     AND d.SK_Mes = m.SK_Mes
     AND d.Numero = DAY(@curDia)
-    AND f.Descripcion = CASE 
-      WHEN CAST(DATEPART(HH, @curDia) AS INT) BETWEEN  0 AND  5 THEN 'Madrugada'
-      WHEN CAST(DATEPART(HH, @curDia) AS INT) BETWEEN  6 AND 11 THEN 'Mañana'
-      WHEN CAST(DATEPART(HH, @curDia) AS INT) BETWEEN 12 AND 19 THEN 'Tarde'
-      WHEN CAST(DATEPART(HH, @curDia) AS INT) BETWEEN 20 AND 23 THEN 'Noche'
-      ELSE CAST( (1/0) AS VARCHAR(1)) END
+    AND DATEPART(HH, @curDia) BETWEEN f.Hora_Desde AND f.Hora_Hasta
     
   SET @curDia = DATEADD(HH, 1, @curDia)
 END
@@ -160,6 +155,9 @@ END
 -- Restauro el lenguaje predeterminado
 SET LANGUAGE @prevLang 
 
+
+PRINT '--- quitar selects de prueba en versión definitiva ***'
+-- Selects para debuggear (quitar en versión definitiva)
 SELECT * FROM LK_Año
 
 SELECT * FROM LK_Mes
