@@ -176,7 +176,8 @@ BEGIN
 CREATE TABLE [dbo].[LK_Temperatura](
 	[SK_Temperatura] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
 	[Descripcion_Temperatura] [nvarchar](255) NOT NULL,
-	[Descripcion_Nivel_Temperatura] [nvarchar](255) NOT NULL,
+	[Limite_Inferior] [numeric](2, 0) NOT NULL,
+	[Limite_Superior] [numeric](2, 0) NOT NULL
  CONSTRAINT [PK_LK_Temperatura] PRIMARY KEY CLUSTERED 
 (
 	[SK_Temperatura] ASC
@@ -209,7 +210,8 @@ BEGIN
 CREATE TABLE [dbo].[LK_Precipitacion](
 	[SK_Precipitacion] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
 	[Descripcion_Precipitacion] [nvarchar](255) NOT NULL,
-	[Descripcion_Nivel_Precipitacion] [nvarchar](255) NOT NULL,
+	[Limite_Inferior] [numeric](2, 0) NOT NULL,
+	[Limite_Superior] [numeric](2, 0) NOT NULL
  CONSTRAINT [PK_LK_Precipitacion] PRIMARY KEY CLUSTERED 
 (
 	[SK_Precipitacion] ASC

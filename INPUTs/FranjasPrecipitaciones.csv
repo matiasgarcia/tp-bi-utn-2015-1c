@@ -1,0 +1,6 @@
+SK_Precipitacion;Descripcion_Precipitacion;Limite_Inferior;Limite_Superior
+1;Débiles;0;2
+2;Moderadas;3;15
+4;Fuertes;16;30
+5;Muy Fuertes;31;60
+6;Torrenciales;61;80
