@@ -1,6 +1,7 @@
-SK_Precipitacion;Descripcion_Precipitacion;Limite_Inferior;Limite_Superior
-1;Muy frio;-5;5
-2;Frio;5;15
-3;Calido;15;25
-4;Caluroso;25;35
-5;Muy Caluroso;35;50
+SK_Temperatura;Descripcion_Temperatura;Temperatura_Desde;Temperatura_Hasta
+0;No Informado;-999;-999
+1;Muy frio;-99;5
+2;Frio;6;15
+3;Calido;16;25
+4;Caluroso;26;35
+5;Muy Caluroso;36;99

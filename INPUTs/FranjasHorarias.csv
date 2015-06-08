@@ -1,7 +1,7 @@
 SK_Precipitacion;Descripcion_Precipitacion;Precipitacion_Desde;Precipitacion_Hasta
 0;No Informado;-999;-999
-1;Débiles;0;2,99
-2;Moderadas;3;15,99
-4;Fuertes;16;30,99
-5;Muy Fuertes;31;60,99
-6;Torrenciales;61;80,99
+1;Débiles;0;2
+2;Moderadas;3;15
+4;Fuertes;16;30
+5;Muy Fuertes;31;60
+6;Torrenciales;61;80
