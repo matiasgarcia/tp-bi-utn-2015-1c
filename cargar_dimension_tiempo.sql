@@ -156,17 +156,3 @@ END
 SET LANGUAGE @prevLang 
 
 
-PRINT '--- quitar selects de prueba en versión definitiva ***'
--- Selects para debuggear (quitar en versión definitiva)
-SELECT * FROM LK_Año
-
-SELECT * FROM LK_Mes
-
-SELECT * FROM LK_Dia
-
-SELECT * FROM LK_Franja_Horaria
-
-SELECT * FROM LK_Hora
-
-
-
