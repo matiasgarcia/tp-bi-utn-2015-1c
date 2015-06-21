@@ -4,15 +4,9 @@ GO
 -- (Horas, Dias, Meses, Años y Franjas Horarias)
 SET NOCOUNT ON 
 
---         3 AÑOS
---        36 MESES
--- +-  1.095 DIAS
--- +- 26.280 HORAS
-
-
 DECLARE	
-	  @añoDesde INT = 2011
-	, @añoHasta INT = 2013
+	  @añoDesde INT = 2010
+	, @añoHasta INT = 2015
 	, @curAño   INT
 
 SET @curAño = @añoDesde
