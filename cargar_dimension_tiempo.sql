@@ -55,7 +55,7 @@ SET LANGUAGE  'SPANISH'
   
 INSERT INTO LK_Mes (Descripcion, Numero, SK_Año)
 SELECT 
-    DATENAME(month, CAST(CAST(a.Descripcion AS VARCHAR(4)) + '-01-' + LEFT('0' + CAST(m.mes AS VARCHAR(2)), 2)  
+    DATENAME(month, CAST(CAST(a.Descripcion AS VARCHAR(4)) + '-01-' + RIGHT('0' + CAST(m.mes AS VARCHAR(2)), 2)  
       AS DATETIME))
   , m.mes
   , a.SK_Año 
